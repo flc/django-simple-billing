@@ -29,7 +29,7 @@ Required settings:
 
 **`SIMPLE_BILLING_INVOICE_FROM`**
 
-Either specify this setting or override the template simple_billing/invoice_from.html.
+Either specify this setting or override the template `simple_billing/invoice_from.html`.
 
 Example setting:
 
@@ -50,11 +50,11 @@ Optional settings:
 
 **`SIMPLE_BILLING_DATA_MODEL`**
 
-Default: simple_billing.BillingData
+Default: `simple_billing.BillingData`
 
 **`SIMPLE_BILLING_INVOICE_MODEL`**
 
-Default: simple_billing.Invoice
+Default: `simple_billing.Invoice`
 
 **`SIMPLE_BILLING_INVOICE_IMG_PATH`**
 
