@@ -1,0 +1,3 @@
+{% for line in invoice_from_lines %}
+<div{% if forloop.first %}class="first-line"{% endif %}>{{ line }}</div>
+{% endfor %}
