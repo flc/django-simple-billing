@@ -150,10 +150,12 @@
           <th class="align-right">Invoice No.</th>
           <td class="align-right">{{ invoice.invoice_number }}</td>
         </tr>
+        {% if invoice.due_date %}
         <tr>
           <th class="align-right">Due date</th>
           <td class="align-right">{{ invoice.due_date | date }}</td>
         </tr>
+        {% endif %}
       </table>
     </div>
     {% endblock %}

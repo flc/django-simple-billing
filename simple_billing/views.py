@@ -17,7 +17,10 @@ class BillingView(generics.GenericAPIView):
         )
 
     def _get_object(self, request):
-        ub = UserBilling.objects.get(user=request.user)
+        try:
+            ub = UserBilling.objects.get(user=request.user)
+        except UserBilling.DoesNotExist:
+            return None
         return ub.billing
 
     def get(self, request):
@@ -29,7 +32,7 @@ class BillingView(generics.GenericAPIView):
     def post(self, request):
         billing = self._get_object(request)
         serializer_class = self.get_serializer_class()
-        serializer = serializer_class(data=request.DATA, instance=billing)
+        serializer = serializer_class(user=request.user, data=request.DATA, instance=billing)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
