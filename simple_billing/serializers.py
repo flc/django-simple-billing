@@ -25,11 +25,19 @@ class BillingDataSerializer(serializers.ModelSerializer):
         company = attrs['company_name']
         first_name = attrs['first_name']
         last_name = attrs['last_name']
+        country = attrs['country']
+        state = attrs['state']
         if not company:
             if not first_name or not last_name:
                 error = _(
                 "You have to specify either the first name "
                 "and last name or the company name."
+                )
+                raise serializers.ValidationError(error)
+        if country == 'US':
+            if not state:
+                error = _(
+                "You have to specify the state."
                 )
                 raise serializers.ValidationError(error)
         return attrs
