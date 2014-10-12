@@ -9,3 +9,7 @@ def get_billing_model():
 
 def get_invoice_model():
     return get_model(*app_settings.INVOICE_MODEL.rsplit('.', 1))
+
+
+def get_invoice_item_model():
+    return get_model(*app_settings.INVOICE_ITEM_MODEL.rsplit('.', 1))
