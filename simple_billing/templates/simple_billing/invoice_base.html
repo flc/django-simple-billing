@@ -182,8 +182,12 @@
     <table class="simple-table">
       <thead>
         <tr>
+          {% if include_item_column %}
           <th>Item</th>
+          {% endif %}
+          {% if include_description_column %}
           <th>Description</th>
+          {% endif %}
           <th class="text-right">Unit Cost</th>
           <th class="text-right">Qty.</th>
           <th class="text-right">Total</th>
@@ -192,8 +196,12 @@
       <tbody>
         {% for item in invoice_items %}
         <tr>
+          {% if include_item_column %}
           <td>{{ item.item }}</td>
+          {% endif %}
+          {% if include_description_column %}
           <td>{{ item.description }}</td>
+          {% endif %}
           <td class="text-right">{{ item.unit_cost }}</td>
           <td class="text-right">{{ item.qty }}</td>
           <td class="text-right">{{ item.total }}</td>

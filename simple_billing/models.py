@@ -159,9 +159,14 @@ class InvoiceBase(models.Model):
         return sum(item.total for item in self.items.iterator())
 
     def get_render_context(self):
+        invoice_items = list(self.items.all())
+        include_item_column = any(i.item for i in invoice_items)
+        include_description_column = any(i.description for i in invoice_items)
         return {
             'invoice': self,
-            'invoice_items': self.items.all(),
+            'invoice_items': invoice_items,
+            'include_item_column': include_item_column,
+            'include_description_column': include_description_column,
             'billing': self.billing.billing,
             'invoice_from': app_settings.INVOICE_FROM,
             'invoice_from_lines': app_settings.INVOICE_FROM.splitlines(),
